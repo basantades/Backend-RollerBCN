@@ -1,0 +1,26 @@
+Pasos a seguir backend:
+
+npm init -y
+Crea archivo package.json (con el -y no se piden preguntas y pone datos por defecto)
+
+npm install express
+Express es un framework para node.js (crea carpeta node_modules) 
+
+?
+npm install body-parser 
+(Puede no ser necesario)
+middleware para Node.js y Express que permite interpretar datos enviados en el cuerpo de una petición HTTP (POST, PUT, etc.).
+
+npm i dotenv
+un paquete de Node.js que permite manejar variables de entorno desde un archivo .env para guardar información sensible como claves de acceso a bases de datos, claves secretas, etc.
+
+npm i mongodb
+Instala el paquete oficial de MongoDB para Node.js, que permite conectarse a una base de datos MongoDB desde un servidor Node.js o Express.
+
+
+Crear carpetas de routes, controllers y models (segun tutorial tambien añadir carpetas de config y helpers)
+
+crear app.js o server.js:
+import express from "express";
+
+añadir en package.json despues de main:  "type": "module",
