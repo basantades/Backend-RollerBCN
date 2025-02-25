@@ -1,8 +1,11 @@
 import "dotenv/config";
 import express from "express";
 import routesUbicaciones from "./routes/ubicaciones.js";
+import bodyParser from "body-parser";
 
 const app = express();
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({ extended: true }));
 app.use('/ubicaciones', routesUbicaciones);
 
 try {

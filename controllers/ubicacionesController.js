@@ -1,11 +1,13 @@
+import ubicacionesModel from "../models/ubicaciones.js";
+
 class ubicacionesController {
     constructor() {
-        // this.ubicaciones = [];
     }
 
     async create(req, res) {
         try {
-            res.status(201).json({status: "ok"});
+            const data = ubicacionesModel.create(req.body);
+            res.status(201).json(data);
         } catch (error) {
             res.status(500).json({status: "error"});
         }
