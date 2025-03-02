@@ -10,7 +10,7 @@ const app = express();
 // app.use(cors()); // abierto sin restricciones
 
 app.use(cors({
-    origin: ["http://localhost:4200", "https://rollerbcn.vercel.app/"], // 🔹 3. Permitir solo peticiones desde Angular
+    origin: ["http://localhost:4200", "https://rollerbcn.vercel.app"],
     methods: "GET,POST,PUT,DELETE", 
     allowedHeaders: "Content-Type,Authorization"
   }));
