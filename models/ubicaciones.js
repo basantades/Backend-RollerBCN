@@ -1,30 +1,26 @@
-import dbClient from "../config/dbClient.js";
-import { ObjectId } from "mongodb";
+// import dbClient from "../config/dbClient.js";
+// import { ObjectId } from "mongodb";
+import ubicacionesSchema from "../schemas/ubicaciones.js";
 
 class ubicacionesModel {
     async create(ubicacion) {
-        const colUbicaciones = dbClient.db.collection('ubicaciones');
-        return await colUbicaciones.insertOne(ubicacion);
+        return await ubicacionesSchema.create(ubicacion);
     }
 
     async update(id, ubicacion) {
-        const colUbicaciones = dbClient.db.collection('ubicaciones');
-        return await colUbicaciones.updateOne({ _id: new ObjectId(id) }, { $set: ubicacion });
+        return await ubicacionesSchema.findOneAndUpdate({ _id: id }, ubicacion, { new: true }); // el new: true es para devuelver el objeto despues de ser actualizado
     }
 
     async delete(id) {
-        const colUbicaciones = dbClient.db.collection('ubicaciones');
-        return await colUbicaciones.deleteOne({ _id: new ObjectId(id) });
+        return await ubicacionesSchema.findOneAndDelete({ _id: id });
     }
 
     async getAll() {
-        const colUbicaciones = dbClient.db.collection('ubicaciones');
-        return await colUbicaciones.find({}).toArray();
+        return await ubicacionesSchema.find({});
     }
 
     async getOne(id) {
-        const colUbicaciones = dbClient.db.collection('ubicaciones');
-        return await colUbicaciones.findOne({ _id: new ObjectId(id) });
+        return await ubicacionesSchema.findOne({ _id: id });
     }
 }
 

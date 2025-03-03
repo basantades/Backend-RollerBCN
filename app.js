@@ -4,6 +4,7 @@ import cors from "cors";
 import routesUbicaciones from "./routes/ubicaciones.js";
 import routesEvents from "./routes/events.js";
 import bodyParser from "body-parser";
+import dbClient from "./config/dbClient.js";
 
 const app = express();
 
@@ -27,3 +28,8 @@ try {
 } catch (error) {
     console.log(error);
 }
+
+process.on("SIGINT", async () => {
+    await dbClient.cerrarConexion();
+    process.exit(0);
+});
