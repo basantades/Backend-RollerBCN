@@ -47,6 +47,14 @@ class ubicacionesController {
             res.status(500).json({status: "error"});
         }
     }
+    async createMany(ubicaciones) {
+        try {
+            const data = await ubicacionesModel.create(ubicaciones);
+            console.log("🚀 Ubicaciones insertadas correctamente");
+        } catch (error) {
+            console.error("❌ Error al subir ubicaciones:", error);
+        }
+    }
 }
 
 export default new ubicacionesController();
