@@ -1,30 +1,26 @@
-import dbClient from "../config/dbClient.js";
-import { ObjectId } from "mongodb";
+// import dbClient from "../config/dbClient.js";
+// import { ObjectId } from "mongodb";
+import eventsSchema from "../schemas/events.js";
 
 class eventsModel {
-    async create(ubicacion) {
-        const colEvents = dbClient.db.collection('events');
-        return await colEvents.insertOne(ubicacion);
+    async create(event) {
+        return await eventsSchema.create(event);
     }
 
-    async update(id, ubicacion) {
-        const colEvents = dbClient.db.collection('events');
-        return await colEvents.updateOne({ _id: new ObjectId(id) }, { $set: ubicacion });
+    async update(id, event) {
+        return await eventsSchema.findOneAndUpdate({ _id: id }, event, { new: true });
     }
 
     async delete(id) {
-        const colEvents = dbClient.db.collection('events');
-        return await colEvents.deleteOne({ _id: new ObjectId(id) });
+        return await eventsSchema.findOneAndDelete({ _id: id });
     }
 
     async getAll() {
-        const colEvents = dbClient.db.collection('events');
-        return await colEvents.find({}).toArray();
+        return await eventsSchema.find({});
     }
 
     async getOne(id) {
-        const colEvents = dbClient.db.collection('events');
-        return await colEvents.findOne({ _id: new ObjectId(id) });
+        return await eventsSchema.findOne({ _id: id });
     }
 }
 
