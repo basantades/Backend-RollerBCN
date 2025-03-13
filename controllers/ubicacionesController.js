@@ -9,7 +9,7 @@ class ubicacionesController {
             const data = await ubicacionesModel.create(req.body);
             res.status(201).json(data);
         } catch (error) {
-            res.status(500).json({status: "error"});
+            res.status(500).json({status: "error al crear"});
         }
     }
     async update(req, res) {
