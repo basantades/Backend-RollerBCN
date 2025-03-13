@@ -5,10 +5,17 @@ import routesUbicaciones from "./routes/ubicaciones.js";
 import routesEvents from "./routes/events.js";
 import bodyParser from "body-parser";
 import dbClient from "./config/dbClient.js";
+import path from "path";
 
 const app = express();
 
-// app.use(cors()); // abierto sin restricciones
+// Configurar la carpeta 'public' como estática
+app.use(express.static(path.join(process.cwd(), "public")));
+
+// Ruta raíz para servir index.html explícitamente aunque 
+app.get('/', (req, res) => {
+  res.sendFile(path.join(process.cwd(), "public", "index.html"));
+});
 
 app.use(cors({
     origin: ["http://localhost:4200", "https://rollerbcn.vercel.app"],
