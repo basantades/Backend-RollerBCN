@@ -3,6 +3,7 @@ import express from "express";
 import cors from "cors"; 
 import routesUbicaciones from "./routes/ubicaciones.js";
 import routesEvents from "./routes/events.js";
+import routesCharts from "./routes/charts.js";
 import bodyParser from "body-parser";
 import dbClient from "./config/dbClient.js";
 import path from "path";
@@ -28,6 +29,7 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use('/ubicaciones', routesUbicaciones);
 app.use('/events', routesEvents);
+app.use('/charts', routesCharts);
 
 try {
     const PORT = process.env.PORT || 3000;
